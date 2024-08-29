@@ -1,4 +1,3 @@
-import {} from 'react';
 import { Button, Table } from 'antd';
 
 const CompareProducts = ({ comparedProducts, onRemove }) => {

@@ -30,7 +30,7 @@ const CompareProductsPage = () => {
       });
       return;
     }
-    if (comparedProducts.find(p => p.id === product.id)) {
+    if (comparedProducts.some(p => p.id === product.id)) {
       notification.warning({
         message: 'Duplicate Product',
         description: 'This product is already in the comparison list.',
@@ -43,6 +43,10 @@ const CompareProductsPage = () => {
   const handleRemoveProduct = (id) => {
     const filteredProducts = comparedProducts.filter(product => product.id !== id);
     setComparedProducts(filteredProducts);
+    notification.success({
+      message: 'Product Removed',
+      description: 'The product has been removed from the comparison list.',
+    });
   };
 
   const showModal = () => {

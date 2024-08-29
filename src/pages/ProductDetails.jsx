@@ -1,4 +1,3 @@
-// src/pages/ProductDetails.jsx
 import { useState } from 'react';
 import ProductDetailsTable from '../component/ProductsDetailsTable';
 import { useNavigate } from 'react-router-dom';
@@ -8,18 +7,19 @@ const ProductDetails = () => {
   const navigate = useNavigate();
 
   const handleCompare = (product) => {
-    if (comparedProducts.length < 4 && !comparedProducts.includes(product)) {
-      product.isCompared = true;
-      setComparedProducts([...comparedProducts, product]);
-      if (comparedProducts.length >= 0) {
-        navigate('/product', { state: { comparedProducts: [...comparedProducts, product] } });
-      }
+    if (comparedProducts.length < 4 && !comparedProducts.some(p => p.id === product.id)) {
+      const updatedProducts = [...comparedProducts, product];
+      setComparedProducts(updatedProducts);
+      navigate('/product', { state: { comparedProducts: updatedProducts } });
     }
   };
 
   return (
     <div>
-      <ProductDetailsTable onCompare={handleCompare} />
+      <ProductDetailsTable
+        onCompare={handleCompare}
+        comparedProducts={comparedProducts}
+      />
     </div>
   );
 };

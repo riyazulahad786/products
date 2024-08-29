@@ -1,9 +1,9 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Table, Button } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const ProductDetailsTable = ({ onCompare }) => {
+const ProductDetailsTable = ({ onCompare, comparedProducts }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({ current: 1, pageSize: 10 });
@@ -79,7 +79,7 @@ const ProductDetailsTable = ({ onCompare }) => {
         <Button
           type="primary"
           onClick={() => onCompare(record)}
-          disabled={record.isCompared}
+          disabled={comparedProducts.some(p => p.id === record.id)}
         >
           Compare
         </Button>
