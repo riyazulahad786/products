@@ -2,15 +2,13 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => (
-  <div className=''>
-   <div className=''>
-   <Header />
-   </div>
-    <div className="d-flex">
+  <div className='d-flex flex-column vh-100'>
+    <Header />
+    <div className='d-flex flex-grow-1'>
       <Sidebar />
-      <div className="container-fluid mt-2">
+      <main className='flex-fill p-3'>
         {children}
-      </div>
+      </main>
     </div>
   </div>
 );

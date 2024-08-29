@@ -7,3 +7,32 @@
     margin: 0;
     box-sizing: border-box;
 }
+/* Custom styles to fix Header and Sidebar */
+
+/* Fix the Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030; /* Ensure the header is above other content */
+  }
+  
+  /* Fix the Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 56px; /* Adjust this based on your Header height */
+    left: 0;
+    height: calc(100vh - 56px); /* Adjust this based on your Header height */
+    width: 350px; /* Adjust as needed */
+    background: #f4f4f4; /* Adjust as needed */
+    z-index: 1020; /* Ensure the sidebar is below the header but above the content */
+  }
+  
+  /* Adjust content area */
+  main {
+   
+    overflow-y: auto;
+    height: calc(100vh - 56px); /* Adjust this based on your Header height */
+  }
+  
